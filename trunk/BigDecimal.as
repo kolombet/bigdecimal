@@ -283,45 +283,45 @@ package
         // This one may seem weird, but its incredibly important.
         // because when we divide 2 ints in AS3 to put it in an array
         // it will be a float. so lets use this to make sure its 100% perfect.
-		private static function div(a:int, b:int):int {
-		    return (a-(a%b))/b as int;
-		}
-		
+        private static function div(a:int, b:int):int {
+            return (a-(a%b))/b as int;
+        }
+        
         // ActionScript 3 Port
         // Utility functions that does not exist in AS3
-	    private static function arraycopy(src:Array, srcindex:int, dest:Array, destindex:int, length:int):void {
-	        var i:int;
-	        
-	        if (destindex > srcindex) {
-	            // in case src and dest are equals, but also doesn't hurt
-	            // if they are different
-	            for (i = length-1; i >= 0; --i) {
-	                dest[i+destindex] = src[i+srcindex];
-	            }
-	        } else {
-	            for (i = 0; i < length; ++i) {
-	                dest[i+destindex] = src[i+srcindex];
-	            }
-	        }
-	    }
-	
+        private static function arraycopy(src:Array, srcindex:int, dest:Array, destindex:int, length:int):void {
+            var i:int;
+            
+            if (destindex > srcindex) {
+                // in case src and dest are equals, but also doesn't hurt
+                // if they are different
+                for (i = length-1; i >= 0; --i) {
+                    dest[i+destindex] = src[i+srcindex];
+                }
+            } else {
+                for (i = 0; i < length; ++i) {
+                    dest[i+destindex] = src[i+srcindex];
+                }
+            }
+        }
+    
         // ActionScript 3 Port
         // Utility functions that does not exist in AS3
-	    private static function createArrayWithZeros(length:int):Array {
-	        var retVal:Array = new Array(length);
-	        var i:int;
-	        for (i = 0; i < length; ++i) {
-	            retVal[i] = 0;
-	        }
-	        return retVal;
-	    }
-	    
+        private static function createArrayWithZeros(length:int):Array {
+            var retVal:Array = new Array(length);
+            var i:int;
+            for (i = 0; i < length; ++i) {
+                retVal[i] = 0;
+            }
+            return retVal;
+        }
+        
         // ActionScript 3 Port
         // Utility functions that does not exist in AS3
-	    private static function isDigit(string:String):Boolean {
-	        return    string.charCodeAt(0) >= BigDecimal.VALUE_ZERO && 
-	                  string.charCodeAt(0) <= BigDecimal.VALUE_NINE;
-	    }
+        private static function isDigit(string:String):Boolean {
+            return    string.charCodeAt(0) >= BigDecimal.VALUE_ZERO && 
+                      string.charCodeAt(0) <= BigDecimal.VALUE_NINE;
+        }
 
         // ActionScript 3 Port
         // Utility functions that does not exist in AS3
@@ -352,10 +352,10 @@ package
         // ActionScript 3 Port
         // Used to Mutate this in a particular scenario
         private function assignMyself(other:BigDecimal):void {
-        	this.ind = other.ind;
-        	this.form = other.form;
-        	this.exp = other.exp;
-        	this.mant = other.mant;
+            this.ind = other.ind;
+            this.form = other.form;
+            this.exp = other.exp;
+            this.mant = other.mant;
         }
 
         /* ----- Constants ----- */
@@ -389,66 +389,6 @@ package
         */
         public static const TEN:BigDecimal = BigDecimal.createStatic(10);
 
-        // the rounding modes (copied here for upwards compatibility)
-        /**
-        * Rounding mode to round to a more positive number.
-        * @see MathContext#ROUND_CEILING
-        * @stable ICU 2.0
-        */
-        public static const ROUND_CEILING:int = MathContext.ROUND_CEILING;
-
-        /**
-        * Rounding mode to round towards zero.
-        * @see MathContext#ROUND_DOWN
-        * @stable ICU 2.0
-        */
-        public static const ROUND_DOWN:int = MathContext.ROUND_DOWN;
-
-        /**
-        * Rounding mode to round to a more negative number.
-        * @see MathContext#ROUND_FLOOR
-        * @stable ICU 2.0
-        */
-        public static const ROUND_FLOOR:int = MathContext.ROUND_FLOOR;
-
-        /**
-        * Rounding mode to round to nearest neighbor, where an equidistant
-        * value is rounded down.
-        * @see MathContext#ROUND_HALF_DOWN
-        * @stable ICU 2.0
-        */
-        public static const ROUND_HALF_DOWN:int = MathContext.ROUND_HALF_DOWN;
-
-        /**
-        * Rounding mode to round to nearest neighbor, where an equidistant
-        * value is rounded to the nearest even neighbor.
-        * @see MathContext#ROUND_HALF_EVEN
-        * @stable ICU 2.0
-        */
-        public static const ROUND_HALF_EVEN:int = MathContext.ROUND_HALF_EVEN;
-
-        /**
-        * Rounding mode to round to nearest neighbor, where an equidistant
-        * value is rounded up.
-        * @see MathContext#ROUND_HALF_UP
-        * @stable ICU 2.0
-        */
-        public static const ROUND_HALF_UP:int = MathContext.ROUND_HALF_UP;
-
-        /**
-        * Rounding mode to assert that no rounding is necessary.
-        * @see MathContext#ROUND_UNNECESSARY
-        * @stable ICU 2.0
-        */
-        public static const ROUND_UNNECESSARY:int = MathContext.ROUND_UNNECESSARY;
-
-        /**
-        * Rounding mode to round away from zero.
-        * @see MathContext#ROUND_UP
-        * @stable ICU 2.0
-        */
-        public static const ROUND_UP:int = MathContext.ROUND_UP;
-
         /* properties constant private */ // locals
         private static const ispos:int = 1; // ind: indicates positive (must be 1)
         private static const iszero:int = 0; // ind: indicates zero (must be 0)
@@ -459,8 +399,6 @@ package
         private static const MaxExp:int = 999999999; // maximum exponent allowed
         private static const MinArg:int = -999999999; // minimum argument integer
         private static const MaxArg:int = 999999999; // maximum argument integer
-
-        private static const plainMC:MathContext = new MathContext(0,MathContext.PLAIN); // context for plain unlimited math
 
         // ActionScript 3 Port
         // In AS3 there is no char, byte or native arrays
@@ -509,7 +447,7 @@ package
         *
         * @serial
         */
-        private var form:int = MathContext.PLAIN; // assumed PLAIN
+        private var form:int = MathContext.NOTATION_PLAIN; // assumed PLAIN
         // We only need two bits for this, at present, but use a byte
         // [again, to allow for smooth future extension]
 
@@ -706,7 +644,7 @@ package
             //This is only for the createStatic
             //People should never pass null to the constructor
             if(inobject == null) {
-            	return;
+                return;
             }
             
             //Path the multiple possibilities of constructing
@@ -717,9 +655,9 @@ package
                 inchars = (inobject as Number).toString();
                 createdFromNumber = true;
             } else if(!(inobject is String)) {
-            	badarg("bad parameter", 0, inchars);
+                badarg("bad parameter", 0, inchars);
             } else {
-            	inchars = inobject as String;
+                inchars = inobject as String;
             }
 
             //Default parameter correction
@@ -964,7 +902,7 @@ package
                 // [ind was set earlier]
                 // now determine form
                 if (hadexp) {
-                    form = MathContext.SCIENTIFIC;
+                    form = MathContext.NOTATION_SCIENTIFIC;
                     // 1999.06.29 check for overflow
                     mag=(exp+mant.length)-1; // true exponent in scientific notation
                     if ((mag<MinExp)||(mag>MaxExp)) {
@@ -977,7 +915,7 @@ package
             //IF we create from Number, set the Default Scale to 10
             if(createdFromNumber) {
                 var newScale:int = ((-exp) < 10) ? 10 : (-exp); 
-            	assignMyself(setScale(newScale));
+                assignMyself(setScale(newScale));
             }
         }
 
@@ -1245,7 +1183,7 @@ package
         * value of this <code>BigDecimal</code>.
         * <p>
         * The same as {@link #abs(MathContext)}, where the context is
-        * <code>new MathContext(0, MathContext.PLAIN)</code>.
+        * <code>new MathContext(0, MathContext.NOTATION_PLAIN)</code>.
         * <p>
         * The length of the decimal part (the scale) of the result will
         * be <code>this.scale()</code>
@@ -1255,10 +1193,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function abs():BigDecimal {
-            return this.absContext(plainMC);
-        }
+/*      ActionScript 3 : Flex override is with default parameters
 
+        public function abs():BigDecimal {
+            return this.absContext(MathContext.NOTATION_PLAIN);
+        }
+*/
         /**
         * Returns a <code>BigDecimal</code> whose value is the absolute value
         * of this <code>BigDecimal</code>.
@@ -1276,11 +1216,16 @@ package
         * @stable ICU 2.0
         */
 
-        public function absContext(context:MathContext):BigDecimal {
-            if (this.ind==isneg) {
-                return this.negateContext(context);
+        public function abs(context:MathContext = null):BigDecimal {
+
+            if(context == null) {
+                context = MathContext.PLAIN;
             }
-            return this.plusContext(context);
+
+            if (this.ind==isneg) {
+                return this.negate(context);
+            }
+            return this.plus(context);
         }
 
         /**
@@ -1301,10 +1246,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function add(rhs:BigDecimal):BigDecimal {
-            return this.addContext(rhs,plainMC);
-        }
+/*      ActionScript 3 : Flex override is with default parameters
 
+        public function add(rhs:BigDecimal):BigDecimal {
+            return this.addContext(rhs,MathContext.NOTATION_PLAIN);
+        }
+*/
         /**
         * Returns a <code>BigDecimal</code> whose value is <code>this+rhs</code>.
         * <p>
@@ -1321,7 +1268,7 @@ package
         * @stable ICU 2.0
         */
 
-        public function addContext(rhs:BigDecimal, context:MathContext):BigDecimal {
+        public function add(rhs:BigDecimal, context:MathContext = null):BigDecimal {
             var lhs:BigDecimal;
             var reqdig:int;
             var res:BigDecimal;
@@ -1340,6 +1287,10 @@ package
             var ca:int=0;
             var cb:int=0;
 
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
+
             /* determine requested digits and form */
             if (context.lostDigits) {
                 checkdigits(rhs,context.digits);
@@ -1350,12 +1301,12 @@ package
             /* Quick exit for add floating 0 */
             // plus() will optimize to return same object if possible
             if (lhs.ind==0) {
-                if (context.form!=MathContext.PLAIN) {
-                    return rhs.plusContext(context);
+                if (context.form!=MathContext.NOTATION_PLAIN) {
+                    return rhs.plus(context);
                 }
                 if (rhs.ind==0) {
-                    if (context.form!=MathContext.PLAIN) {
-                        return lhs.plusContext(context);
+                    if (context.form!=MathContext.NOTATION_PLAIN) {
+                        return lhs.plus(context);
                     }
                 }
             }
@@ -1504,7 +1455,7 @@ package
                                                 ca=usel[ia];
                                             } else {
                                                 if (ib>eb) {/* identical */
-                                                    if (context.form!=MathContext.PLAIN) {
+                                                    if (context.form!=MathContext.NOTATION_PLAIN) {
                                                         return ZERO;
                                                     }
                                                     // [if PLAIN we must do the subtract, in case of 0.000 results]
@@ -1568,10 +1519,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function compareTo(rhs:BigDecimal):int {
-            return this.compareToContext(rhs,plainMC);
-        }
+/*      ActionScript 3 : Flex override is with default parameters
 
+        public function compareTo(rhs:BigDecimal):int {
+            return this.compareToContext(rhs,MathContext.PLAIN);
+        }
+*/
         /**
         * Compares this <code>BigDecimal</code> to another.
         * <p>
@@ -1604,11 +1557,15 @@ package
         * @stable ICU 2.0
         */
 
-        public function compareToContext(rhs:BigDecimal, context:MathContext):int {
+        public function compareTo(rhs:BigDecimal, context:MathContext = null):int {
             var thislength:int = 0;
             var i:int = 0;
             var newrhs:BigDecimal;
             
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
+
             // rhs=null will raise NullPointerException, as per Comparable interface
             if (context.lostDigits) {
                 checkdigits(rhs,context.digits);
@@ -1654,7 +1611,7 @@ package
             /* carry out a subtract to make the comparison */
             newrhs=clone(rhs); // safe copy
             newrhs.ind=-newrhs.ind; // prepare to subtract
-            return this.addContext(newrhs,context).ind; // add, and return sign of result
+            return this.add(newrhs,context).ind; // add, and return sign of result
         }
 
         /**
@@ -1677,10 +1634,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function divide(rhs:BigDecimal):BigDecimal {
-            return this.dodivide('D',rhs,plainMC,-1);
-        }
+/*      ActionScript 3 : Flex override is with default parameters
 
+        public function divide(rhs:BigDecimal):BigDecimal {
+            return this.dodivide('D',rhs,MathContext.PLAIN,-1);
+        }
+*/
         /**
         * Returns a plain <code>BigDecimal</code> whose value is
         * <code>this/rhs</code>, using fixed point arithmetic and a
@@ -1714,7 +1673,7 @@ package
 
         public function divideRound(rhs:BigDecimal,round:int):BigDecimal {
             var context:MathContext;
-            context= new MathContext(0,MathContext.PLAIN,false,round); // [checks round, too]
+            context= new MathContext(0,MathContext.NOTATION_PLAIN,false,round); // [checks round, too]
             return this.dodivide('D',rhs,context,-1); // take scale from LHS
         }
 
@@ -1757,7 +1716,7 @@ package
             if (scale<0) {
                 throw new Error("Negative scale:"+" "+scale);
             }
-            context=new MathContext(0,MathContext.PLAIN,false,round); // [checks round]
+            context=new MathContext(0,MathContext.NOTATION_PLAIN,false,round); // [checks round]
             return this.dodivide('D',rhs,context,scale);
         }
 
@@ -1778,7 +1737,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function divideContext(rhs:BigDecimal,context:MathContext):BigDecimal {
+        public function divide(rhs:BigDecimal,context:MathContext = null):BigDecimal {
+
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
+
             return this.dodivide('D',rhs,context,-1);
         }
 
@@ -1798,11 +1762,13 @@ package
         * @stable ICU 2.0
         */
 
+/*      ActionScript 3 : Flex override is with default parameters
+
         public function divideInteger(rhs:BigDecimal):BigDecimal {
             // scale 0 to drop .000 when plain
-            return this.dodivide('I',rhs,plainMC,0);
+            return this.dodivide('I',rhs,MathContext.PLAIN,0);
         }
-
+*/
         /**
         * Returns a <code>BigDecimal</code> whose value is the integer
         * part of <code>this/rhs</code>.
@@ -1823,7 +1789,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function divideIntegerContext(rhs:BigDecimal,context:MathContext):BigDecimal {
+        public function divideInteger(rhs:BigDecimal,context:MathContext = null):BigDecimal {
+
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
+
             // scale 0 to drop .000 when plain
             return this.dodivide('I',rhs,context,0);
         }
@@ -1843,10 +1814,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function max(rhs:BigDecimal):BigDecimal {
-            return this.maxContext(rhs,plainMC);
-        }
+/*      ActionScript 3 : Flex override is with default parameters
 
+        public function max(rhs:BigDecimal):BigDecimal {
+            return this.maxContext(rhs,MathContext.PLAIN);
+        }
+*/
         /**
         * Returns a <code>BigDecimal</code> whose value is
         * the maximum of <code>this</code> and <code>rhs</code>.
@@ -1870,11 +1843,16 @@ package
         * @stable ICU 2.0
         */
 
-        public function maxContext(rhs:BigDecimal,context:MathContext):BigDecimal {
-            if ((this.compareToContext(rhs,context))>=0) {
-                return this.plusContext(context);
+        public function max(rhs:BigDecimal,context:MathContext = null):BigDecimal {
+
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
+
+            if ((this.compareTo(rhs,context))>=0) {
+                return this.plus(context);
             } else {
-                return rhs.plusContext(context);
+                return rhs.plus(context);
             }
         }
 
@@ -1893,10 +1871,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function min(rhs:BigDecimal):BigDecimal {
-            return this.minContext(rhs,plainMC);
-        }
+/*      ActionScript 3 : Flex override is with default parameters
 
+        public function min(rhs:BigDecimal):BigDecimal {
+            return this.minContext(rhs,MathContext.PLAIN);
+        }
+*/
         /**
         * Returns a <code>BigDecimal</code> whose value is
         * the minimum of <code>this</code> and <code>rhs</code>.
@@ -1920,11 +1900,16 @@ package
         * @stable ICU 2.0
         */
 
-        public function minContext(rhs:BigDecimal,context:MathContext):BigDecimal {
-            if ((this.compareToContext(rhs,context))<=0) {
-                return this.plusContext(context);
+        public function min(rhs:BigDecimal,context:MathContext = null):BigDecimal {
+
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
+
+            if ((this.compareTo(rhs,context))<=0) {
+                return this.plus(context);
             } else {
-                return rhs.plusContext(context);
+                return rhs.plus(context);
             }
         }
 
@@ -1947,10 +1932,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function multiply(rhs:BigDecimal):BigDecimal {
-            return this.multiplyContext(rhs,plainMC);
-        }
+/*      ActionScript 3 : Flex override is with default parameters
 
+        public function multiply(rhs:BigDecimal):BigDecimal {
+            return this.multiplyContext(rhs,MathContext.PLAIN);
+        }
+*/
         /**
         * Returns a <code>BigDecimal</code> whose value is <code>this*rhs</code>.
         * <p>
@@ -1967,7 +1954,7 @@ package
         * @stable ICU 2.0
         */
 
-        public function multiplyContext(rhs:BigDecimal,context:MathContext):BigDecimal {
+        public function multiply(rhs:BigDecimal,context:MathContext = null):BigDecimal {
             var lhs:BigDecimal;
             var padding:int;
             var reqdig:int;
@@ -1979,6 +1966,10 @@ package
             var acc:Array;
             var n:int = 0;
             var mult:int = 0;
+
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
 
             if (context.lostDigits) {
                 checkdigits(rhs,context.digits);
@@ -2080,10 +2071,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function negate():BigDecimal {
-            return this.negateContext(plainMC);
-        }
+/*      ActionScript 3 : Flex override is with default parameters
 
+        public function negate():BigDecimal {
+            return this.negateContext(MathContext.PLAIN);
+        }
+*/
         /**
         * Returns a <code>BigDecimal</code> whose value is <code>-this</code>.
         * <p>
@@ -2098,7 +2091,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function negateContext(context:MathContext):BigDecimal{
+        public function negate(context:MathContext = null):BigDecimal{
+
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
+
             var res:BigDecimal;
             // Originally called minus(), changed to matched Java precedents
             // This simply clones, flips the sign, and possibly rounds
@@ -2128,10 +2126,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function plus():BigDecimal {
-            return this.plusContext(plainMC);
-        }
+/*      ActionScript 3 : Flex override is with default parameters
 
+        public function plus():BigDecimal {
+            return this.plusContext(MathContext.PLAIN);
+        }
+*/
         /**
         * Returns a <code>BigDecimal</code> whose value is
         * <code>+this</code>.
@@ -2150,15 +2150,20 @@ package
         * @stable ICU 2.0
         */
 
-        public function plusContext(context:MathContext):BigDecimal {
+        public function plus(context:MathContext = null):BigDecimal {
+
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
+
             // This clones and forces the result to the new settings
             // May return same object
             if (context.lostDigits) {
                 checkdigits(null as BigDecimal,context.digits);
             }
             // Optimization: returns same object for some common cases
-            if (context.form==MathContext.PLAIN) {
-                if (this.form==MathContext.PLAIN) {
+            if (context.form==MathContext.NOTATION_PLAIN) {
+                if (this.form==MathContext.NOTATION_PLAIN) {
                     if (this.mant.length<=context.digits) {
                         return this;
                     }
@@ -2196,11 +2201,12 @@ package
         * is not a whole number.
         * @stable ICU 2.0
         */
+/*      ActionScript 3 : Flex override is with default parameters
 
         public function pow(rhs:BigDecimal):BigDecimal {
-            return this.powContext(rhs,plainMC);
+            return this.powContext(rhs,MathContext.PLAIN);
         }
-
+*/
         // The name for this method is inherited from the precedent set by the
         // BigInteger and Math classes.
 
@@ -2231,7 +2237,7 @@ package
         * @stable ICU 2.0
         */
 
-        public function powContext(rhs:BigDecimal,context:MathContext):BigDecimal {
+        public function pow(rhs:BigDecimal,context:MathContext = null):BigDecimal {
             var n:int;
             var lhs:BigDecimal;
             var reqdig:int;
@@ -2242,10 +2248,14 @@ package
             var seenbit:Boolean;
             var i:int = 0;
 
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
+
             if (context.lostDigits) {
                 checkdigits(rhs,context.digits);
             }
-
+            
             n=rhs.intcheck(MinArg,MaxArg); // check RHS by the rules
             lhs=this; // clarified name
 
@@ -2292,7 +2302,7 @@ package
                     n=n+n; // shift left 1 bit
                     if (n<0) { // top bit is set
                         seenbit=true; // OK, we're off
-                        res=res.multiplyContext(lhs,workset); // acc=acc*x
+                        res=res.multiply(lhs,workset); // acc=acc*x
                     }
                     if (i==31) {
                         break _i; // that was the last bit
@@ -2300,11 +2310,11 @@ package
                     if ((!seenbit)) {
                         continue _i; // we don't have to square 1
                     }
-                    res=res.multiplyContext(res,workset); // acc=acc*acc [square]
+                    res=res.multiply(res,workset); // acc=acc*acc [square]
                 }
             }/*i*/ // 32 bits
             if (rhs.ind<0) {// was a **-n [hence digits>0]
-                res=ONE.divideContext(res,workset); // .. so acc=1/acc
+                res=ONE.divide(res,workset); // .. so acc=1/acc
             }
             return res.finish(context,true); // round and strip [original digits]
         }
@@ -2326,11 +2336,12 @@ package
         * @throws ArithmeticException if <code>rhs</code> is zero.
         * @stable ICU 2.0
         */
+/*      ActionScript 3 : Flex override is with default parameters
 
         public function remainder(rhs:BigDecimal):BigDecimal {
-            return this.dodivide('R',rhs,plainMC,-1);
+            return this.dodivide('R',rhs,MathContext.PLAIN,-1);
         }
-
+*/
         /**
         * Returns a <code>BigDecimal</code> whose value is the remainder of
         * <code>this/rhs</code>.
@@ -2354,7 +2365,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function remainderContext(rhs:BigDecimal,context:MathContext):BigDecimal {
+        public function remainder(rhs:BigDecimal,context:MathContext = null):BigDecimal {
+
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
+
             return this.dodivide('R',rhs,context,-1);
         }
 
@@ -2376,10 +2392,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function subtract(rhs:BigDecimal):BigDecimal {
-            return this.subtractContext(rhs,plainMC);
-        }
+/*      ActionScript 3 : Flex override is with default parameters
 
+        public function subtract(rhs:BigDecimal):BigDecimal {
+            return this.subtractContext(rhs,MathContext.PLAIN);
+        }
+*/
         /**
         * Returns a <code>BigDecimal</code> whose value is <code>this-rhs</code>.
         * <p>
@@ -2396,8 +2414,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function subtractContext(rhs:BigDecimal,context:MathContext):BigDecimal {
+        public function subtract(rhs:BigDecimal,context:MathContext = null):BigDecimal {
             var newrhs:BigDecimal;
+
+            if(context == null) {
+                context = MathContext.PLAIN;
+            }
 
             if (context.lostDigits) {
                 checkdigits(rhs,context.digits);
@@ -2408,7 +2430,7 @@ package
             newrhs=clone(rhs); // safe copy
             newrhs.ind=-newrhs.ind; // prepare to subtract
 
-            return this.addContext(newrhs,context); // arithmetic
+            return this.add(newrhs,context); // arithmetic
         }
 
         /* ---------------------------------------------------------------- */
@@ -2464,7 +2486,7 @@ package
 
         public function compareTo(rhsobj:Object):int {
             // the cast in the next line will raise ClassCastException if necessary
-            return compareTo(rhsobj as BigDecimal,plainMC);
+            return compareTo(rhsobj as BigDecimal,MathContext.PLAIN);
         }
         */
         /**
@@ -2775,10 +2797,10 @@ package
             }
 
             {/*select*/
-                if (exformint==MathContext.SCIENTIFIC) {
-                } else if (exformint==MathContext.ENGINEERING) {
+                if (exformint==MathContext.NOTATION_SCIENTIFIC) {
+                } else if (exformint==MathContext.NOTATION_ENGINEERING) {
                 } else if (exformint==(-1)) {
-                    exformint=MathContext.SCIENTIFIC;
+                    exformint=MathContext.NOTATION_SCIENTIFIC;
                 } else{ // note PLAIN isn't allowed
                     badarg("format",5,new String(exformint));
                 }
@@ -2786,12 +2808,12 @@ package
 
             // checking the rounding mode is done by trying to construct a
             // MathContext object with that mode; it will fail if bad
-            if (exround!=ROUND_HALF_UP) {
+            if (exround!=MathContext.ROUND_HALF_UP) {
                 try { // if non-default...
                     if (exround==(-1)) {
-                        exround=ROUND_HALF_UP;
+                        exround=MathContext.ROUND_HALF_UP;
                     } else {
-                        new MathContext(9,MathContext.SCIENTIFIC,false,exround);
+                        new MathContext(9,MathContext.NOTATION_SCIENTIFIC,false,exround);
                     }
                 } catch ($10:Error) {
                     badarg("format",6,new String(exround));
@@ -2815,9 +2837,9 @@ package
             {
                 setform:do {/*select*/
                     if (exdigits==(-1)) {
-                        num.form=MathContext.PLAIN;
+                        num.form=MathContext.NOTATION_PLAIN;
                     } else if (num.ind==iszero) {
-                        num.form=MathContext.PLAIN;
+                        num.form=MathContext.NOTATION_PLAIN;
                     } else {
                         // determine whether triggers
                         mag=num.exp+num.mant.length;
@@ -2826,7 +2848,7 @@ package
                         } else if (mag<(-5)) {
                             num.form=exformint;
                         } else {
-                            num.form=MathContext.PLAIN;
+                            num.form=MathContext.NOTATION_PLAIN;
                         }
                     }
                 } while(false);
@@ -2840,9 +2862,9 @@ package
                 setafter:for(;;) {
                     // calculate the current after-length
                     {/*select*/
-                        if (num.form==MathContext.PLAIN) {
+                        if (num.form==MathContext.NOTATION_PLAIN) {
                             thisafter=-num.exp; // has decimal part
-                        } else if (num.form==MathContext.SCIENTIFIC) {
+                        } else if (num.form==MathContext.NOTATION_SCIENTIFIC) {
                             thisafter=num.mant.length-1;
                         } else { // engineering
                             lead=(((num.exp+num.mant.length)-1))%3; // exponent to use
@@ -3041,79 +3063,79 @@ package
         * @stable ICU 2.0
         */
         public function intValueExact():int {
-	        var lodigit:int;
-	        var useexp:int = 0;
-	        var result:int;
-	        var i:int = 0;
-	        var topdig:int = 0;
-	        // This does not use longValueExact() as the latter can be much
-	        // slower.
-	        // intcheck (from pow) relies on this to check decimal part
-	        if (ind==iszero) {
-	           return 0; // easy, and quite common
-	        }
-	        /* test and drop any trailing decimal part */
-	        
-	        lodigit=mant.length-1;
-	        if (exp<0) {
-    	        lodigit=lodigit+exp; // reduces by -(-exp)
-	           /* all decimal places must be 0 */
-	        
-	            if ((!(allzero(mant,lodigit+1)))) {
-	               throw new Error("Decimal part non-zero:"+" "+this.toString());
-	            }
-	           if (lodigit<0) {
-	               return 0; // -1<this<1
-	           }
-	           useexp=0;
-	        } else {/* >=0 */
-	        
-	           if ((exp+lodigit)>9) { // early exit
-	               throw new Error("Conversion overflow:"+" "+this.toString());
-	           }
-	           useexp=exp;
-	        }
-	        /* convert the mantissa to binary, inline for speed */
-	        
-	        result=0;
-	        {
-	           var $16:int = lodigit+useexp;
-	           i=0;
-	           _i:for(; i <= $16; i++) {
-	               result=result*10;
-	               if (i<=lodigit) {
-	                   result=result+mant[i];
-	               }
-	           }
-	        }/*i*/
-	
-	        /* Now, if the risky length, check for overflow */
-	        
-	        if ((lodigit+useexp)==9) {
-    	        // note we cannot just test for -ve result, as overflow can move a
-	           // zero into the top bit [consider 5555555555]
-	            topdig=div(result, 1000000000); // get top digit, preserving sign
-	            if (topdig!=mant[0]) { // digit must match and be positive
-	               // except in the special case ...
-	               if (result==int.MIN_VALUE) { // looks like the special
-	                   if (ind==isneg) { // really was negative
-	                       if (mant[0]==2) {
-	                           return result; // really had top digit 2
-	                       }
-	                   }
-	               }
-	               
-	               throw new Error("Conversion overflow:"+" "+this.toString());
-	           }
-	        }
-	
-	        /* Looks good */
-	        
-	        if (ind==ispos) {
-	           return result;
-	        }
-	        
-	        return -result;
+            var lodigit:int;
+            var useexp:int = 0;
+            var result:int;
+            var i:int = 0;
+            var topdig:int = 0;
+            // This does not use longValueExact() as the latter can be much
+            // slower.
+            // intcheck (from pow) relies on this to check decimal part
+            if (ind==iszero) {
+               return 0; // easy, and quite common
+            }
+            /* test and drop any trailing decimal part */
+            
+            lodigit=mant.length-1;
+            if (exp<0) {
+                lodigit=lodigit+exp; // reduces by -(-exp)
+               /* all decimal places must be 0 */
+            
+                if ((!(allzero(mant,lodigit+1)))) {
+                   throw new Error("Decimal part non-zero:"+" "+this.toString());
+                }
+               if (lodigit<0) {
+                   return 0; // -1<this<1
+               }
+               useexp=0;
+            } else {/* >=0 */
+            
+               if ((exp+lodigit)>9) { // early exit
+                   throw new Error("Conversion overflow:"+" "+this.toString());
+               }
+               useexp=exp;
+            }
+            /* convert the mantissa to binary, inline for speed */
+            
+            result=0;
+            {
+               var $16:int = lodigit+useexp;
+               i=0;
+               _i:for(; i <= $16; i++) {
+                   result=result*10;
+                   if (i<=lodigit) {
+                       result=result+mant[i];
+                   }
+               }
+            }/*i*/
+    
+            /* Now, if the risky length, check for overflow */
+            
+            if ((lodigit+useexp)==9) {
+                // note we cannot just test for -ve result, as overflow can move a
+               // zero into the top bit [consider 5555555555]
+                topdig=div(result, 1000000000); // get top digit, preserving sign
+                if (topdig!=mant[0]) { // digit must match and be positive
+                   // except in the special case ...
+                   if (result==int.MIN_VALUE) { // looks like the special
+                       if (ind==isneg) { // really was negative
+                           if (mant[0]==2) {
+                               return result; // really had top digit 2
+                           }
+                       }
+                   }
+                   
+                   throw new Error("Conversion overflow:"+" "+this.toString());
+               }
+            }
+    
+            /* Looks good */
+            
+            if (ind==ispos) {
+               return result;
+            }
+            
+            return -result;
         }
 
         /**
@@ -3246,7 +3268,7 @@ package
             res=clone(this);
             res.exp=res.exp-n;
 
-            return res.finish(plainMC,false); // finish sets form and checks exponent
+            return res.finish(MathContext.PLAIN,false); // finish sets form and checks exponent
         }
 
         /**
@@ -3276,7 +3298,7 @@ package
             res=clone(this);
             res.exp=res.exp+n;
 
-            return res.finish(plainMC,false);
+            return res.finish(MathContext.PLAIN,false);
         }
 
         /**
@@ -3326,10 +3348,12 @@ package
         * @stable ICU 2.0
         */
 
-        public function setScale(scale:int):BigDecimal {
-            return setScaleRound(scale,ROUND_UNNECESSARY);
-        }
+/*      ActionScript 3 : Flex override is with default parameters
 
+        public function setScale(scale:int):BigDecimal {
+            return setScaleRound(scale,MathContext.ROUND_UNNECESSARY);
+        }
+*/
         /**
         * Returns a plain <code>BigDecimal</code> with a given scale.
         * <p>
@@ -3364,17 +3388,25 @@ package
         * @stable ICU 2.0
         */
 
-        public function setScaleRound(scale:int,round:int):BigDecimal {
+        public function setScale(scale:int,round:int = -1):BigDecimal {
             var ourscale:int;
             var res:BigDecimal;
             var padding:int = 0;
             var newlen:int = 0;
+            
+            //ActionScript 3
+            //Correct the default parameter patch because of 
+            //Compiler bug for the compile time constants
+            if(round == -1) {
+                round = MathContext.ROUND_UNNECESSARY;
+            }
+            
             // at present this naughtily only checks the round value if it is
             // needed (used), for speed
             ourscale=this.scale();
 
             if (ourscale==scale) { // already correct scale
-                if (this.form==MathContext.PLAIN) {// .. and form
+                if (this.form==MathContext.NOTATION_PLAIN) {// .. and form
                     return this;
                 }
             }
@@ -3402,7 +3434,7 @@ package
                     res.exp=res.exp-1;
                 }
             }
-            res.form=MathContext.PLAIN; // by definition
+            res.form=MathContext.NOTATION_PLAIN; // by definition
             return res;
         }
 
@@ -3582,11 +3614,11 @@ package
         */
 
         public function toString():String {
-        	var charArray:Array = layout();
-        	var returnValue:String = "";
-        	for(var i:int = 0; i < charArray.length; ++i) {
-        		returnValue += charArray[i];
-        	}
+            var charArray:Array = layout();
+            var returnValue:String = "";
+            for(var i:int = 0; i < charArray.length; ++i) {
+                returnValue += charArray[i];
+            }
             return returnValue;
         }
 
@@ -3750,7 +3782,7 @@ package
                 }
             }/*i*/
 
-            if (form!=MathContext.PLAIN) {/* exponential notation needed */
+            if (form!=MathContext.NOTATION_PLAIN) {/* exponential notation needed */
                 //sb=new java.lang.StringBuffer JavaDoc(cmant.length+15); // -x.xxxE+999999999
                 sb="";
                 if (ind==isneg) {
@@ -3758,7 +3790,7 @@ package
                 }
                 euse=(exp+cmant.length)-1; // exponent to use
                 /* setup sig=significant digits and copy to result */
-                if (form==MathContext.SCIENTIFIC) { // [default]
+                if (form==MathContext.NOTATION_SCIENTIFIC) { // [default]
                     sb += cmant[0]; // significant character
                     if (cmant.length>1) {// have decimal part
                         //sb.append('.').append(cmant,1,cmant.length-1);
@@ -3785,8 +3817,8 @@ package
                         } else { // decimal point needed
                             //sb.append(cmant,0,sig).append('.').append(cmant,sig,cmant.length-sig);
                             sb += cmant.slice(0,sig).join("");
-					        sb += ".";
-					        sb += cmant.slice(sig).join("");
+                            sb += ".";
+                            sb += cmant.slice(sig).join("");
                         }
                     } while(false);
                 }/*engineering*/
@@ -3978,7 +4010,7 @@ package
             }
 
             if (lhs.ind==0) { // 0/x => 0 [possibly with .0s]
-                if (context.form!=MathContext.PLAIN) {
+                if (context.form!=MathContext.NOTATION_PLAIN) {
                     return ZERO;
                 }
                 if (scale==(-1)) {
@@ -4595,16 +4627,16 @@ package
 
             {
                 modes:do {/*select*/
-                    if (mode==ROUND_HALF_UP) { // default first [most common]
+                    if (mode==MathContext.ROUND_HALF_UP) { // default first [most common]
                         if (first>=5) {
                             increment=sign;
                         }
-                    } else if (mode==ROUND_UNNECESSARY) { // default for setScale()
+                    } else if (mode==MathContext.ROUND_UNNECESSARY) { // default for setScale()
                         // discarding any non-zero digits is an error
                         if ((!(allzero(oldmant,len)))) {
                             throw new Error("Rounding necessary");
                         }
-                    } else if (mode==ROUND_HALF_DOWN) { // 0.5000 goes down
+                    } else if (mode==MathContext.ROUND_HALF_DOWN) { // 0.5000 goes down
                         if (first>5) {
                             increment=sign;
                         } else if (first==5) {
@@ -4612,7 +4644,7 @@ package
                                 increment=sign;
                             }
                         }
-                    } else if (mode==ROUND_HALF_EVEN) { // 0.5000 goes down if left digit even
+                    } else if (mode==MathContext.ROUND_HALF_EVEN) { // 0.5000 goes down if left digit even
                         if (first>5) {
                             increment=sign;
                         } else if (first==5) {
@@ -4622,19 +4654,19 @@ package
                                 increment=sign;
                             }
                         }
-                    } else if (mode==ROUND_DOWN) {
+                    } else if (mode==MathContext.ROUND_DOWN) {
                         // never increment
-                    } else if (mode==ROUND_UP) { // increment if discarded non-zero
+                    } else if (mode==MathContext.ROUND_UP) { // increment if discarded non-zero
                         if ((!(allzero(oldmant,len)))) {
                             increment=sign;
                         }
-                    } else if (mode==ROUND_CEILING) { // more positive
+                    } else if (mode==MathContext.ROUND_CEILING) { // more positive
                         if (sign>0) {
                             if ((!(allzero(oldmant,len)))) {
                                 increment=sign;
                             }
                         }
-                    } else if (mode==ROUND_FLOOR) { // more negative
+                    } else if (mode==MathContext.ROUND_FLOOR) { // more negative
                         if (sign<0) {
                             if ((!(allzero(oldmant,len)))) {
                                 increment=sign;
@@ -4737,7 +4769,7 @@ package
             /* If strip requested (and standard formatting), remove
             insignificant trailing zeros. */
             if (strip)
-                if (context.form!=MathContext.PLAIN) {
+                if (context.form!=MathContext.NOTATION_PLAIN) {
                     d=this.mant.length;
                     /* see if we need to drop any trailing zeros */
                     {
@@ -4758,7 +4790,7 @@ package
                     }
                 }
 
-                form=MathContext.PLAIN; // preset
+                form=MathContext.NOTATION_PLAIN; // preset
 
                 /* Now check for leading- and all- zeros in mantissa */
                 {
@@ -4795,7 +4827,7 @@ package
                             if ((mag<MinExp)||(mag>MaxExp)) {
                                 overflow:do {
                                     // possible reprieve if form is engineering
-                                    if (form==MathContext.ENGINEERING) {
+                                    if (form==MathContext.NOTATION_ENGINEERING) {
                                         sig = mag%3; // leftover
                                         if (sig < 0) {
                                             sig = 3+sig; // negative exponent
@@ -4822,7 +4854,7 @@ package
             ind = iszero;
 
             {/*select*/
-                if (context.form != MathContext.PLAIN) {
+                if (context.form != MathContext.NOTATION_PLAIN) {
                     exp=0; // standard result; go to '0'
                 } else if (exp > 0) {
                     exp=0; // +ve exponent also goes to '0'
